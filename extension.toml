@@ -1,0 +1,33 @@
+id = "monkeyc"
+name = "Monkey C"
+version = "0.2.0"
+schema_version = 1
+authors = ["DuckSoft"]
+description = "Syntax highlighting and formatting for Garmin Connect IQ Monkey C."
+repository = "https://github.com/DuckSoft/zed-extension-monkeyc"
+languages = ["languages/monkeyc"]
+
+[grammars.monkeyc]
+repository = "https://github.com/DuckSoft/tree-sitter-monkeyc"
+rev = "ec98189fe479d52b8ba90a68d573f437574e31dd"
+
+[language_servers.monkeyc-fmt]
+name = "Monkey C Formatter"
+languages = ["Monkey C"]
+
+# Cargo's absolute path varies; only this pinned installation is permitted.
+[[capabilities]]
+kind = "process:exec"
+command = "*"
+args = [
+  "+stable",
+  "install",
+  "--git",
+  "https://github.com/DuckSoft/monkeyc-fmt",
+  "--rev",
+  "c69c2a5d348d447192d29935049309fe2276f59e",
+  "--locked",
+  "--root",
+  "*",
+  "monkeyc-fmt",
+]
